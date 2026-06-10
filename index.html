@@ -12,6 +12,63 @@
 </head>
 <body>
 
+  <!-- Login/Register Overlay -->
+  <div class="login-screen-overlay" id="login-screen-overlay" style="display: flex;">
+    <div class="login-container glass-panel highlight-border">
+      <div class="brand-logo" style="margin-bottom: 20px; font-size: 28px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <span class="glitch-text">FITHUB</span>
+        <span class="sub-logo">// ACESSO DO ATLETA</span>
+      </div>
+      
+      <!-- Login Form -->
+      <form id="login-form-container" class="flex-column gap-15" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="login-email">E-mail do Atleta</label>
+          <input type="email" id="login-email" placeholder="email@exemplo.com" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Senha de Segurança</label>
+          <input type="password" id="login-password" placeholder="sua senha..." required>
+        </div>
+        
+        <button type="submit" class="btn-neon green-glow">AUTENTICAR PORTAL</button>
+        
+        <button type="button" class="btn-neon-outline blue-glow" onclick="loginWithBiometrics()" style="margin-top: 5px;">
+          <svg viewBox="0 0 24 24" width="18" style="vertical-align: middle; margin-right: 8px;">
+            <path d="M12 1c-5.52 0-10 4.48-10 10v1c0 .55.45 1 1 1s1-.45 1-1v-1c0-4.41 3.59-8 8-8s8 3.59 8 8v1.5c0 1.38-1.12 2.5-2.5 2.5S15 13.88 15 12.5V11c0-1.66-1.34-3-3-3s-3 1.34-3 3v2c0 2.76 2.24 5 5 5h.5c1.38 0 2.5 1.12 2.5 2.5v1.5c0 .55.45 1 1 1s1-.45 1-1v-1.5c0-2.48-2.02-4.5-4.5-4.5h-.5c-1.66 0-3-1.34-3-3v-2c0-.55.45-1 1-1s1 .45 1 1v1.5c0 2.48 2.02 4.5 4.5 4.5s4.5-2.02 4.5-4.5v-1.5c0-5.52-4.48-10-10-10zm-6 10c0-3.31 2.69-6 6-6s6 2.69 6 6v1c0 .55.45 1 1 1s1-.45 1-1v-1c0-4.41-3.59-8-8-8s-8 3.59-8 8v1c0 .55.45 1 1 1s1-.45 1-1v-1z" fill="currentColor"/>
+          </svg>
+          ACESSO RÁPIDO (DIGITAL)
+        </button>
+        
+        <p class="auth-switch-text" style="text-align: center; font-size: 13px; color: var(--text-muted); margin-top: 10px;">
+          Primeiro acesso? <span onclick="toggleAuthMode(true)" style="color: var(--accent-orange); cursor: pointer; text-decoration: underline;">Cadastre seu portal</span>
+        </p>
+      </form>
+      
+      <!-- Register Form -->
+      <form id="register-form-container" class="flex-column gap-15" style="display: none;" onsubmit="handleRegister(event)">
+        <div class="form-group">
+          <label for="register-email">E-mail de Cadastro</label>
+          <input type="email" id="register-email" placeholder="atleta@fithub.com" required>
+        </div>
+        <div class="form-group">
+          <label for="register-password">Senha de Acesso</label>
+          <input type="password" id="register-password" placeholder="mínimo 6 caracteres..." required>
+        </div>
+        <div class="form-group">
+          <label for="register-password-confirm">Confirmar Senha</label>
+          <input type="password" id="register-password-confirm" placeholder="digite novamente..." required>
+        </div>
+        
+        <button type="submit" class="btn-neon">CADASTRAR E ENTRAR</button>
+        
+        <p class="auth-switch-text" style="text-align: center; font-size: 13px; color: var(--text-muted); margin-top: 10px;">
+          Já possui conta? <span onclick="toggleAuthMode(false)" style="color: var(--accent-orange); cursor: pointer; text-decoration: underline;">Acessar portal</span>
+        </p>
+      </form>
+    </div>
+  </div>
+
   <!-- Header Section -->
   <header class="app-header">
     <div class="brand-container">
@@ -20,6 +77,10 @@
         <span class="sub-logo">// TREINO</span>
       </div>
       <div class="sys-badge">FITHUB COACHING // ATLETA ATIVO</div>
+      <button class="btn-logout" onclick="logoutUser()" title="Encerrar Sessão">
+        <svg viewBox="0 0 24 24" width="16" style="vertical-align: middle; margin-right: 5px;"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" fill="currentColor"/></svg>
+        Sair
+      </button>
     </div>
     
     <!-- Real-time athletic stats -->
@@ -540,7 +601,12 @@
   <audio id="sound-success" src="" preload="auto"></audio>
   <audio id="sound-alarm" src="" preload="auto"></audio>
 
-  <!-- Main JavaScript App Logic -->
-  <script src="app.js"></script>
+  <!-- Modularized JavaScript Modules -->
+  <script src="src/js/auth.js"></script>
+  <script src="src/js/voice.js"></script>
+  <script src="src/js/camera.js"></script>
+  <script src="src/js/workouts.js"></script>
+  <script src="src/js/dashboard.js"></script>
+  <script src="src/js/main.js"></script>
 </body>
 </html>

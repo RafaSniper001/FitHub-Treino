@@ -1776,6 +1776,339 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 3px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-orange);
 }
+
+/* ==========================================================================
+   Fase 2: Acesso Seguro (Login/Cadastro) e Biometria Cyberpunk
+   ========================================================================== */
+
+/* Overlay de Login em Tela Cheia */
+.login-screen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #141418 0%, #0a0a0c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 30px;
+  background: rgba(20, 20, 24, 0.85);
+  border-radius: 16px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 82, 0, 0.05);
+}
+
+.auth-switch-text span {
+  transition: color 0.2s ease;
+}
+
+.auth-switch-text span:hover {
+  color: #ff6a22 !important;
+}
+
+/* Modal do Scanner de Impressão Digital */
+.biometric-scanner-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 12, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  animation: fadeIn 0.3s ease;
+}
+
+.scanner-panel {
+  width: 320px;
+  padding: 30px 20px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid var(--accent-orange);
+  box-shadow: 0 0 30px rgba(255, 82, 0, 0.15);
+  background: #141418;
+}
+
+.scanner-header {
+  margin-bottom: 25px;
+  font-family: var(--font-title);
+}
+
+.scanner-header h3 {
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.fingerprint-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px auto;
+  color: var(--accent-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fingerprint-svg {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 0 8px rgba(255, 82, 0, 0.5));
+}
+
+/* Efeito Laser de Escaneamento */
+.scanner-laser {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 80px;
+  height: 3px;
+  background: var(--accent-orange);
+  box-shadow: 0 0 12px var(--accent-orange), 0 0 4px var(--accent-orange);
+  border-radius: 50%;
+  animation: laserScan 2s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes laserScan {
+  0%, 100% {
+    top: 10px;
+    opacity: 0.8;
+  }
+  50% {
+    top: 90px;
+    opacity: 1;
+  }
+}
+
+#scanner-status-text {
+  font-family: var(--font-title);
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+/* Botão de Logout no Header */
+.btn-logout {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  font-family: var(--font-title);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  margin-left: 10px;
+}
+
+.btn-logout:hover {
+  background: rgba(255, 82, 0, 0.1);
+  border-color: var(--accent-orange);
+  color: #fff;
+  box-shadow: 0 0 8px rgba(255, 82, 0, 0.2);
+}
+
+
+/* ==========================================================================
+   Fase 2: Responsividade e Layout Expansível para Qualquer Tela Android
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .grid-layout {
+    grid-template-columns: 1fr;
+  }
+  .span-2, .span-3 {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+    overflow-y: auto;
+  }
+  
+  .app-header {
+    height: 60px;
+    padding: 0 15px;
+  }
+  
+  .brand-logo {
+    font-size: 18px;
+  }
+  
+  .sys-badge {
+    display: none; /* Esconde para ganhar espaço */
+  }
+  
+  .hud-stats {
+    display: none; /* Oculta na barra superior do mobile */
+  }
+  
+  /* Menu vira Barra de Navegação Inferior (Estilo App Nativo Android) */
+  .app-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #0b0b0e;
+    border-top: 1px solid var(--border-light);
+    border-bottom: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    z-index: 99;
+  }
+  
+  .nav-tab {
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    font-size: 9px;
+    padding: 0;
+    letter-spacing: 0;
+  }
+  
+  .nav-tab.active::after {
+    bottom: auto;
+    top: 0;
+    width: 50%;
+    left: 25%;
+    height: 2px;
+  }
+  
+  .tab-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* Conteúdo Principal ganha margem inferior por conta da barra nav */
+  .app-main-content {
+    padding: 15px 12px 75px 12px;
+  }
+  
+  /* Ajuste de grids e layouts para fluxo vertical único */
+  .workout-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  
+  .workout-sidebar {
+    height: 250px;
+    overflow-y: auto;
+  }
+  
+  .library-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  
+  .library-filters {
+    margin-bottom: 15px;
+  }
+  
+  .camera-tab-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  
+  .camera-sidebar {
+    margin-top: 15px;
+  }
+  
+  .ai-tab-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  
+  .ai-sidebar-panel {
+    margin-top: 15px;
+  }
+  
+  /* Painel de Estatísticas do Dashboard */
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .metric-card {
+    padding: 10px;
+  }
+  
+  .m-val {
+    font-size: 18px;
+  }
+  
+  /* Ajuste da Câmera no Mobile */
+  .camera-container {
+    aspect-ratio: 4/3; /* Formato clássico de câmera mobile */
+  }
+  
+  .hud-side-metrics {
+    right: 10px;
+    padding: 6px 8px;
+  }
+  
+  .hud-side-metrics .stat-row {
+    width: 90px;
+  }
+  
+  .circular-timer {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .timer-text {
+    font-size: 28px;
+  }
+  
+  /* Tela de Execução de Treino Adaptativa */
+  .execution-body {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    overflow-y: auto;
+    height: auto;
+  }
+  
+  .execution-left, .execution-right {
+    height: auto;
+    overflow-y: visible;
+  }
+  
+  .circular-timer {
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 30px 20px;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

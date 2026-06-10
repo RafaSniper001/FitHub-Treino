@@ -5,13 +5,20 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package": "electron-packager . FitHubTreino --platform=win32 --arch=x64 --out=dist --overwrite"
+    "package": "electron-packager . FitHubTreino --platform=win32 --arch=x64 --out=dist --overwrite",
+    "build-mobile": "node copy-assets.js",
+    "sync-mobile": "npm run build-mobile && npx cap sync"
   },
   "keywords": [],
   "author": "Rafael",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "@capacitor/android": "^8.4.0",
+    "@capacitor/cli": "^7.6.6",
+    "@capacitor/core": "^8.4.0"
+  },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
     "electron": "^30.0.0",
     "electron-packager": "^17.1.2"
   }

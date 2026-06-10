@@ -1,0 +1,6 @@
+{
+  "appId": "com.fithub.treino",
+  "appName": "FitHub Treino",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}
