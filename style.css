@@ -2085,10 +2085,21 @@ input[type="range"]::-webkit-slider-thumb {
   }
   
   /* Tela de Execução de Treino Adaptativa */
+  .execution-overlay {
+    display: block;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  .execution-window {
+    height: auto;
+    min-height: 100%;
+  }
+
   .execution-body {
     grid-template-columns: 1fr;
     padding: 10px;
-    overflow-y: auto;
+    overflow-y: visible;
     height: auto;
   }
   

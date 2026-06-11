@@ -44,6 +44,19 @@ function saveStats(workoutDone, setsDone, volumeGained, hoursGained) {
   renderWeeklyChart();
 }
 
+// Adiciona estatísticas incrementais em tempo real (série concluída ou volume ganho)
+function saveIncrementalStats(setsDone, volumeGained) {
+  const completedSets = parseInt(localStorage.getItem('fithub_stat_completed_sets') || '0') + setsDone;
+  const totalVolume = parseInt(localStorage.getItem('fithub_stat_volume') || '0') + volumeGained;
+
+  localStorage.setItem('fithub_stat_completed_sets', completedSets.toString());
+  localStorage.setItem('fithub_stat_volume', totalVolume.toString());
+
+  loadStats();
+  renderWeeklyChart();
+}
+
+
 // Renderiza o gráfico de barras semanal dinamicamente
 function renderWeeklyChart() {
   const barsContainer = document.getElementById('chart-bars');

@@ -446,6 +446,10 @@ function completeSetAt(setIdx) {
   activeWorkout.completedSetsCount++;
   currentSetIndex = setIdx + 1;
 
+  // Atualiza estatísticas em tempo real no dashboard
+  const repsNum = parseInt(repsVal) || 10;
+  saveIncrementalStats(1, weightVal * repsNum);
+
   if (currentSetIndex >= ex.sets) {
     showToast(`Exercício "${ex.name}" Concluído!`);
     playSynthesizedSound('success');
@@ -619,7 +623,9 @@ function finishWorkout() {
     volumeGained += ex.weight * ex.sets * repsNum;
   });
 
-  saveStats(true, activeWorkout.completedSetsCount, volumeGained, durationHours);
+  // O volume e as séries já foram salvos incrementalmente a cada série feita.
+  // Salvamos aqui apenas a conclusão do treino (+1 treino e o tempo decorrido).
+  saveStats(true, 0, 0, durationHours);
   stopWebcam();
 
   document.getElementById('workout-execution-overlay').style.display = "none";
