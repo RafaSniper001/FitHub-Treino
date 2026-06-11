@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package": "electron-packager . FitHubTreino --platform=win32 --arch=x64 --out=dist --overwrite",
+    "package": "electron-packager . FitHubTreino --platform=win32 --arch=x64 --out=dist --overwrite --ignore=\"(android|dist|node_modules)\"",
     "build-mobile": "node copy-assets.js",
     "sync-mobile": "npm run build-mobile && npx cap sync"
   },
