@@ -470,7 +470,7 @@ label {
   text-transform: uppercase;
 }
 
-input[type="text"], input[type="password"], input[type="number"] {
+input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
   background: var(--bg-input);
   border: 1px solid var(--border-light);
   color: #fff;
@@ -2122,4 +2122,98 @@ input[type="range"]::-webkit-slider-thumb {
     grid-template-columns: 1fr;
   }
 }
+
+/* Custom Login Screen Enhancements */
+.login-screen-overlay {
+  background: radial-gradient(circle at center, #181822 0%, #08080a 100%) !important;
+}
+
+.login-container {
+  max-width: 440px !important;
+  background: rgba(14, 14, 18, 0.85) !important;
+  border: 1px solid rgba(255, 82, 0, 0.15) !important;
+  box-shadow: 0 0 50px rgba(255, 82, 0, 0.08), inset 0 1px 0 rgba(255,255,255,0.05) !important;
+  border-radius: 16px !important;
+  padding: 45px 35px !important;
+}
+
+.login-container .brand-logo {
+  margin-bottom: 35px !important;
+}
+
+.login-container .brand-logo .glitch-text {
+  font-size: 36px !important;
+  letter-spacing: 2px !important;
+  font-weight: 900 !important;
+  text-shadow: 0 0 10px rgba(255, 82, 0, 0.3) !important;
+}
+
+.login-container .brand-logo .sub-logo {
+  font-size: 11px !important;
+  color: var(--text-muted) !important;
+  letter-spacing: 3px !important;
+  margin-top: 6px !important;
+}
+
+.login-container .form-group {
+  margin-bottom: 15px !important;
+}
+
+.login-container label {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: var(--text-muted) !important;
+  margin-bottom: 6px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+  background: rgba(10, 10, 12, 0.9) !important;
+  border: 1px solid var(--border-light) !important;
+  color: #fff !important;
+  padding: 16px 18px !important;
+  border-radius: 8px !important;
+  font-family: var(--font-body);
+  font-size: 16px !important;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.login-container input[type="email"]:focus,
+.login-container input[type="password"]:focus {
+  border-color: var(--accent-orange) !important;
+  background: rgba(20, 20, 24, 0.95) !important;
+  box-shadow: 0 0 12px rgba(255, 82, 0, 0.2) !important;
+  outline: none;
+}
+
+.login-container .btn-neon {
+  padding: 16px 20px !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  letter-spacing: 1px;
+  border-radius: 8px !important;
+  text-transform: uppercase;
+  margin-top: 15px !important;
+  cursor: pointer;
+}
+
+.login-container .btn-neon-outline {
+  padding: 14px 20px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+  border-radius: 8px !important;
+  margin-top: 5px !important;
+  cursor: pointer;
+}
+
+.login-container .auth-switch-text {
+  margin-top: 18px !important;
+  font-size: 12px !important;
+}
+
 
