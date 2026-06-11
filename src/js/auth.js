@@ -5,14 +5,17 @@ let isUserAuthenticated = false;
 function initAuth() {
   const loggedUser = localStorage.getItem('fithub_logged_email');
   const loginOverlay = document.getElementById('login-screen-overlay');
+  const appWrapper = document.getElementById('app-wrapper');
   
   if (loggedUser) {
     isUserAuthenticated = true;
     if (loginOverlay) loginOverlay.style.display = 'none';
+    if (appWrapper) appWrapper.style.display = 'block';
     showToast(`Bem-vindo de volta, ${loggedUser}!`);
   } else {
     isUserAuthenticated = false;
     if (loginOverlay) loginOverlay.style.display = 'flex';
+    if (appWrapper) appWrapper.style.display = 'none';
   }
 }
 
@@ -73,6 +76,9 @@ function performLoginSuccess(email) {
   localStorage.setItem('fithub_logged_email', email);
   isUserAuthenticated = true;
   
+  const appWrapper = document.getElementById('app-wrapper');
+  if (appWrapper) appWrapper.style.display = 'block';
+  
   // Esconder tela de login com transição suave
   const loginOverlay = document.getElementById('login-screen-overlay');
   if (loginOverlay) {
@@ -105,6 +111,9 @@ function logoutUser() {
   // Limpar campos de login
   document.getElementById('login-email').value = "";
   document.getElementById('login-password').value = "";
+
+  const appWrapper = document.getElementById('app-wrapper');
+  if (appWrapper) appWrapper.style.display = 'none';
 
   const loginOverlay = document.getElementById('login-screen-overlay');
   if (loginOverlay) loginOverlay.style.display = 'flex';
